@@ -18,7 +18,7 @@ averageMark (algebra, geography, physics);
 
 let myName = 'Marina';
 function sayHello(userName) {
-	let message = `Привет, мир! Меня зовут ${userName} `;    
+	let message = `Привет, мир! Меня зовут ${userName}`;    
 	return message;
 }
 sayHello(myName);
