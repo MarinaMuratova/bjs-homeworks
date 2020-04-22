@@ -23,13 +23,12 @@ function sayHello(userName) {
 }
 sayHello(myName);
 
+
 let x = 2;
 let y = 22;
 let z = 0;
-
-function calculateFormula(a, b, c) {
-	let result = a * b + 5 * c + a - 1;
+function calculateFormula() {
+	let result = x * y + 5 * z + x - 1;
     return result;
 }
-
-calculateFormula(x, y, z);
+calculateFormula();
