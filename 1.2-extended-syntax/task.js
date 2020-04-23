@@ -52,6 +52,17 @@ getAverageMark(array);
 
 
 function askDrink(name,dateOfBirthday){
-    // код для задачи №3 писать здесь
-    return result;
+	function getFullYear() {
+	 let currentAge = 2020 - dateOfBirthday;
+     return currentAge;
+	}
+ let age = getFullYear(); 
+ let result = (age > 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+ return result;
 }
+askDrink('Marina', 2010);
+
+
+
+
+
