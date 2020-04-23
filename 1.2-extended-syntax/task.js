@@ -1,14 +1,57 @@
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    // return x;
+ let discriminant = b ** 2 - 4 * a * c;
+ console.log(`D = ${discriminant}`);
+ let x = [];
+ let x1 = 0;
+ let x2 = 0;
+  if (discriminant > 0) {
+	 x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+	 x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+	 x = [x1, x2];
+     console.log(`x1 = ${x1}`);
+     console.log(`x2 = ${x2}`);
+    } else if (discriminant === 0) {
+         x1 = -b / (2 * a); 
+         x = [x1];
+         console.log(`x1 = ${x1}`);
+	    } else {
+		     x = [];
+          }
+
+ return x;
 }
+getResult(1, 2, 17);
+
+
+
+let array = [1,2,3,4,5];
 
 function getAverageMark(marks){
-    // код для задачи №2 писать здесь
-    // return averageMark;
+  let averageMark = 0;
+  let sum = 0;
+  if (marks.length > 5 ) {
+     console.log(`Оценок больше 5, а именно ${marks.length}`);
+     marks.splice(5);
+     console.log(marks);
+       for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
+        averageMark = sum / marks.length
+       }
+  } else if (marks.length <= 5) {
+       for (let i = 0; i < marks.length; i++) {
+       sum += marks[i];
+       averageMark = sum / marks.length
+       }
+    } else {
+      averageMark = null;
+    }
+return averageMark;
 }
+getAverageMark(array);
+
+
 
 function askDrink(name,dateOfBirthday){
     // код для задачи №3 писать здесь
-    // return result;
+    return result;
 }
