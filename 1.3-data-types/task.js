@@ -12,7 +12,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 		console.log(message);
 	}
 	
-// 	вторая попытка
+// 	вторая попытка - сделать массив, по нему пройтись циклом и выявить "не число"
 //let arrParsed = [parseInt(percent), parseInt(contribution), parseInt(amount)];
 //      for (let i = 0; i < arrParsed.length; i++){
 //       if (isNaN(arrParsed[i])) { 
@@ -24,6 +24,17 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 // 	   }
 	
 // }
+
+
+//третья попытка - попробовать перевести "строку" в число, но тогда не понимаю, как в строку сообщения вставить нужное название параметра
+// const parsed = parseInt(percent, contribution, amount);
+ //       if (isNaN(parsed)) { 
+ // 		let  message = `Параметр ? содержит неправильное значение`;
+ // 		console.log(message); 
+ // 	   }
+
+  // }
+
 
 	percent = percent / 100;
 	let toGiveBack = amount - contribution;
