@@ -1,3 +1,4 @@
+//Задача 1
 function getSolutions(a, b, c) {
   let solution = {
     D: b ** 2 - 4 * a * c,
@@ -33,3 +34,89 @@ function showSolutionsMessage(a, b, c) {
   }
   return message;
 }
+
+
+
+//Задача 2
+let data = {
+	algebra: [],
+	geometry: [],
+    russian: [],
+    physic: [],
+    music: [],
+    english: [],
+    poetry: [],
+    chemistry: [],
+    french: []
+	};
+
+function getAverageScore(data) {
+	let averageMark = {};
+    averageMark.algebra = getAverageMark(data.algebra);
+  	averageMark.geometry= getAverageMark(data.geometry);
+    averageMark.russian= getAverageMark(data.russian);
+    averageMark.physic = getAverageMark(data.physic);
+    averageMark.music= getAverageMark(data.music);
+    averageMark.english= getAverageMark(data.english);
+    averageMark.poetry= getAverageMark(data.poetry);
+    averageMark.chemistry= getAverageMark(data.chemistry);
+    averageMark.french= getAverageMark(data.french);
+    average = [averageMark.algebra, averageMark.geometry, averageMark.russian, averageMark.physic, averageMark.music,averageMark.english,  averageMark.poetry, averageMark.chemistry, averageMark.french];
+    let total=0;
+    if (average.length > 0){
+      for (let i = 0; i < average.length; i++){
+      total+=average[i];
+      }
+    }
+
+    averageMark.average = total/average.length;
+  return averageMark;
+}
+
+
+function getAverageMark(marks){
+  let sum = 0;
+  if (marks.length == 0){
+    return 0;
+  } 
+      for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
+      } 
+ return sum / marks.length;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
