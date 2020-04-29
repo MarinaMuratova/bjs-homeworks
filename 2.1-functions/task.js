@@ -38,17 +38,17 @@ function showSolutionsMessage(a, b, c) {
 
 
 //Задача 2
-let data = {
-	algebra: [],
-	geometry: [],
-    russian: [],
-    physic: [],
-    music: [],
-    english: [],
-    poetry: [],
-    chemistry: [],
-    french: []
-	};
+// let data = {
+// 	algebra: [],
+// 	geometry: [],
+//     russian: [],
+//     physic: [],
+//     music: [],
+//     english: [],
+//     poetry: [],
+//     chemistry: [],
+//     french: []
+// 	};
 
 function getAverageScore(data) {
 	let averageMark = {};
@@ -86,6 +86,21 @@ function getAverageMark(marks){
 
 
 
+//Задача 3
+function getPersonData(secretData){
+  let answer = {};
+  answer.firstName = getDecodedValue(secDat.aaa);
+  answer.lastName = getDecodedValue(secDat.bbb);
+
+return answer
+}
+function getDecodedValue(secret) {
+  if (secret == 0) {
+    return 'Родриго';
+  } else{
+    return 'Эмильо';
+  }
+}
 
 
 
