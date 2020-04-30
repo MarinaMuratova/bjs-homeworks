@@ -32,7 +32,7 @@ function showSolutionsMessage(a, b, c) {
   } else if (result.roots.length == 1) {
     message = `Уравнение имеет один корень X₁ = ${result.roots[0]}`;
   }
-  return message;
+  return `${messageTask} \n${messageD} \n${message}`
 }
 
 
