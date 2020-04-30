@@ -50,47 +50,47 @@ function showSolutionsMessage(a, b, c) {
 //     french: []
 // 	};
 
-function getAverageScore(data) {
-	let averageMark = {};
-    averageMark.algebra = getAverageMark(data.algebra);
-  	averageMark.geometry= getAverageMark(data.geometry);
-    averageMark.russian= getAverageMark(data.russian);
-    averageMark.physic = getAverageMark(data.physic);
-    averageMark.music= getAverageMark(data.music);
-    averageMark.english= getAverageMark(data.english);
-    averageMark.poetry= getAverageMark(data.poetry);
-    averageMark.chemistry= getAverageMark(data.chemistry);
-    averageMark.french= getAverageMark(data.french);
-    average = [averageMark.algebra, averageMark.geometry, averageMark.russian, averageMark.physic, averageMark.music,averageMark.english,  averageMark.poetry, averageMark.chemistry, averageMark.french];
-    let total=0;
-    if (average.length > 0){
-      for (let i = 0; i < average.length; i++){
-      total+=average[i];
-      }
-    }
+// function getAverageScore(data) {
+// 	let averageMark = {};
+//     averageMark.algebra = getAverageMark(data.algebra);
+//   	averageMark.geometry= getAverageMark(data.geometry);
+//     averageMark.russian= getAverageMark(data.russian);
+//     averageMark.physic = getAverageMark(data.physic);
+//     averageMark.music= getAverageMark(data.music);
+//     averageMark.english= getAverageMark(data.english);
+//     averageMark.poetry= getAverageMark(data.poetry);
+//     averageMark.chemistry= getAverageMark(data.chemistry);
+//     averageMark.french= getAverageMark(data.french);
+//     average = [averageMark.algebra, averageMark.geometry, averageMark.russian, averageMark.physic, averageMark.music,averageMark.english,  averageMark.poetry, averageMark.chemistry, averageMark.french];
+//     let total=0;
+//     if (average.length > 0){
+//       for (let i = 0; i < average.length; i++){
+//       total+=average[i];
+//       }
+//     }
 
-    averageMark.average = total/average.length;
-  return averageMark;
-}
-
-
-function getAverageMark(marks){
-  let sum = 0;
-  if (marks.length == 0){
-    return 0;
-  } 
-      for (let i = 0; i < marks.length; i++) {
-        sum += marks[i];
-      } 
- return sum / marks.length;
+//     averageMark.average = total/average.length;
+//   return averageMark;
+// }
 
 
+// function getAverageMark(marks){
+//   let sum = 0;
+//   if (marks.length == 0){
+//     return 0;
+//   } 
+//       for (let i = 0; i < marks.length; i++) {
+//         sum += marks[i];
+//       } 
+//  return sum / marks.length;
 
-//Задача 3
+
+
+// //Задача 3
 function getPersonData(secretData){
   let answer = {};
-  answer.firstName = getDecodedValue(secDat.aaa);
-  answer.lastName = getDecodedValue(secDat.bbb);
+  answer.firstName = getDecodedValue(secretData.aaa);
+  answer.lastName = getDecodedValue(secretData.bbb);
 
 return answer
 }
