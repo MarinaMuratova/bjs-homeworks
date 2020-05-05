@@ -8,16 +8,10 @@ function getSolutions(a, b, c) {
   if (solution.D > 0) {
     let x1 = (-b + Math.sqrt(solution.D)) / (2 * a);
     let x2 = (-b - Math.sqrt(solution.D)) / (2 * a);
-    solution = {
-      D: solution.D,
-      roots: [x1, x2]
-    };
+    solution.roots = [x1, x2];
   } else if (solution.D === 0) {
     x1 = -b / (2 * a);
-    solution = {
-      D: solution.D,
-      roots: [x1]
-    };
+    solution.roots = [x1];
   }
   return solution;
 }
@@ -55,9 +49,11 @@ for (subject in data) {
     let marks = 0;
     marks += getAverageMark(data[subject]); 
     console.log({subject, marks});
+    
 };
- let average = 0;
- average = getAverageMark(); //????
+  let averageMarks = [getAverageMark(data[subject])];//??
+ average = getAverageMark(averageMarks); 
+ console.log(average);
 }
 
 function getAverageMark(marks){
