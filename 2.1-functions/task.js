@@ -51,22 +51,14 @@ function showSolutionsMessage(a, b, c) {
 // 	};
 
 function getAverageScore(data) {
-	let averageMark = {};
-    averageMark.algebra = getAverageMark(data.algebra);
-  	averageMark.geometry= getAverageMark(data.geometry);
-    averageMark.russian= getAverageMark(data.russian);
-    averageMark.physic = getAverageMark(data.physic);
-    averageMark.music= getAverageMark(data.music);
-    averageMark.english= getAverageMark(data.english);
-    averageMark.poetry= getAverageMark(data.poetry);
-    averageMark.chemistry= getAverageMark(data.chemistry);
-    averageMark.french= getAverageMark(data.french);
-    average = [averageMark.algebra, averageMark.geometry, averageMark.russian, averageMark.physic, averageMark.music,averageMark.english,  averageMark.poetry, averageMark.chemistry, averageMark.french];
-
-    averageMark.average = getAverageMark(average);
-  return averageMark;
+for (subject in data) {
+    let marks = 0;
+    marks += getAverageMark(data[subject]); 
+    console.log({subject, marks});
+};
+ let average = 0;
+ average = getAverageMark(); //????
 }
-
 
 function getAverageMark(marks){
   let sum = 0;
@@ -77,6 +69,7 @@ function getAverageMark(marks){
         sum += marks[i];
       } 
  return sum / marks.length;
+}
 
 
 
