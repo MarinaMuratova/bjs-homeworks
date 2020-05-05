@@ -45,15 +45,18 @@ function showSolutionsMessage(a, b, c) {
 // 	};
 
 function getAverageScore(data) {
+  let averageMarks = [];
 for (subject in data) {
     let marks = 0;
     marks += getAverageMark(data[subject]); 
     console.log({subject, marks});
-    
+    averageMarks.push(marks);
+    if (marks!==0){
+       averageMarks.push(marks);
+    };
 };
-  let averageMarks = [getAverageMark(data[subject])];//??
- average = getAverageMark(averageMarks); 
- console.log(average);
+let average = getAverageMark(averageMarks); 
+ console.log(`{average: ${average}}`);
 }
 
 function getAverageMark(marks){
