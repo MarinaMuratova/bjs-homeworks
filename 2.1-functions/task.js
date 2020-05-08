@@ -49,14 +49,15 @@ function getAverageScore(data) {
 for (subject in data) {
     let marks = 0;
     marks += getAverageMark(data[subject]); 
-    console.log({subject, marks});
+    data[subject] = getAverageMark(data[subject]);
     averageMarks.push(marks);
     if (marks!==0){
        averageMarks.push(marks);
     };
 };
 let average = getAverageMark(averageMarks); 
- console.log(`{average: ${average}}`);
+ data.average = average;
+ return data
 }
 
 function getAverageMark(marks){
