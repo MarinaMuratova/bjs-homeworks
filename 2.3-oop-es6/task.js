@@ -190,7 +190,7 @@ class Staff extends Weapon{
 
 //улучшенные
 class LongBow extends Bow{
-  constructor(name, attack, range){
+  constructor(){
     super()
     this.name = 'Длинный лук';
     this.attack = 15;
@@ -199,7 +199,7 @@ class LongBow extends Bow{
 }
 
 class Axe extends Sword{
-  constructor(name, attack, durability){
+  constructor(){
     super()
     this.name = 'Секира';
     this.attack = 27;
@@ -208,7 +208,7 @@ class Axe extends Sword{
 }
 
 class StormStaff extends Staff{
-  constructor(name, attack, range){
+  constructor(){
     super()
     this.name = 'Посох Бури';
     this.attack = 10;
