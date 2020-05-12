@@ -1,57 +1,57 @@
 // //Задача1 
 
-class Weapon{
-  constructor(name, attack, durability, range){
-    this.name = name;
-    this.attack = attack;
-    this.durability = durability;
-    this.range = range;
-    this.startDurability = durability;
-  }
-  takeDamage(damage){
-  	if (this.durability == Infinity){
-      return this.durability;
-    }
-  	let newDurability = this.durability - damage;
-    this.durability = newDurability;
-    if (this.durability > 0 ){
-    	return this.durability;
-    } else {
-    	 return 0;
-    }
+// class Weapon{
+//   constructor(name, attack, durability, range){
+//     this.name = name;
+//     this.attack = attack;
+//     this.durability = durability;
+//     this.range = range;
+//     this.startDurability = durability;
+//   }
+//   takeDamage(damage){
+//   	if (this.durability == Infinity){
+//       return this.durability;
+//     }
+//   	let newDurability = this.durability - damage;
+//     this.durability = newDurability;
+//     if (this.durability > 0 ){
+//     	return this.durability;
+//     } else {
+//     	 return this.durability = 0;
+//     }
     
-  }
-  getDamage(){
-  	if (this.durability == 0){
-  		return 0;
-  	}
-  	if (this.durability >= 0.3 * this.startDurability){
-  		return this.attack;
-  	} else{
-  		return this.attack / 2;
-  	}
-  }
-  isBroken(){
-  	if (this.durability > 0){
-  		return false;
-    }
-    }
-}
+//   }
+//   getDamage(){
+//   	if (this.durability == 0){
+//   		return 0;
+//   	}
+//   	if (this.durability >= 0.3 * this.startDurability){
+//   		return this.attack;
+//   	} else{
+//   		return this.attack / 2;
+//   	}
+//   }
+//   isBroken(){
+//   	if (this.durability > 0){
+//   		return false;
+//     }
+//     }
+// }
 
-const arm = new Weapon ('Рука', 1, Infinity, 1);
+// const arm = new Weapon ('Рука', 1, Infinity, 1);
   
-const bow = new Weapon('Лук', 10, 200, 1);
+// const bow = new Weapon('Лук', 10, 200, 1);
   
-const sword = new Weapon('Меч', 25, 500, 1);
+// const sword = new Weapon('Меч', 25, 500, 1);
 
-const knife = new Weapon('Нож', 5, 300, 1);
+// const knife = new Weapon('Нож', 5, 300, 1);
   
-const staff = new Weapon('Посох', 8, 300, 2);
+// const staff = new Weapon('Посох', 8, 300, 2);
 
 
-const longBow = new Weapon('Длинный лук', 15,200,  4); 
-const axe = new Weapon('Секира', 27, 800, 1);
-const stormStaff = new Weapon('Посох Бури', 10, 300, 3);
+// const longBow = new Weapon('Длинный лук', 15,200,  4); 
+// const axe = new Weapon('Секира', 27, 800, 1);
+// const stormStaff = new Weapon('Посох Бури', 10, 300, 3);
 
 //Задача 1, вариант 2
 
@@ -72,7 +72,7 @@ class Weapon{
     if (this.durability > 0 ){
      return this.durability;
     } else {
-      return 0;
+      return this.durability = 0;
     }
     
   }
