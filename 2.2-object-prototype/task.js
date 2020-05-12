@@ -1,9 +1,10 @@
 function getAnimalSound(animal) {
-	// let sound = animal.sound;
+	
     if (animal === undefined){
     	return null;
     } 
-    	return animal.sound;
+    let sound = animal.sound;
+    	return sound;
 }
 
 function getAverageMark(marks) {
@@ -12,16 +13,16 @@ function getAverageMark(marks) {
     	return 0;
      }
      for (let i = 0; i < marks.length; i++){
-    	sum += Number(marks[i]);
+    	sum += parseFloat(marks[i]);
      }
     return Math.round(sum/marks.length);
 }
 
 function checkBirthday(birthday) {
-    let currentDate = new Date().getTime();
+    const currentDate = new Date().getTime();
 
     if (birthday === null){
-    	return age < 18;
+    	return false;
     }
 
     let userBirthday = new Date(birthday).getTime();
