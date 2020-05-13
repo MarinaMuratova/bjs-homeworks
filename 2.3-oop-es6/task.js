@@ -216,7 +216,45 @@ class StormStaff extends Staff{
   }
 }
 
+//Задача 3
+class StudentLog{
+  constructor(name){
+    this.name = name;
+    this.data = {};
+  }
+    getName(){
+    return this.name
+    }
+  
+  addGrade(grade, subject){
+    this.grade = grade;
+    this.subject = subject;
+    this.data[subject] = [];
+    if (typeof grade == 'number'){
+      this.data[subject].push(this.grade)
+    }
+    if ((typeof grade !== 'number') || grade < 1 || grade > 5){
+      console.warn(`Вы пытались поставить оценку "${this.grade}" по предмету "${this.subject}". Допускаются только числа от 1 до 5`)
+    }
+      return this.data[subject].length
+    } 
+  
+  getAverageBySubject(subject){
+    if (this.data[subject] == null){
+      return 0;
+    }
+    let sum = 0;
+     for (let i = 0; i < this.data[subject].length; i++){
+       sum += this.data[subject][i];
+     }
+    return sum / this.data[subject].length; //почему-то длина = 1. Из-за этого не получается посчитать среднюю оценку
+  }
+  
+  getTotalAverage(){
+    //идей вообще никаких
+  }
 
+}
 
 
 
