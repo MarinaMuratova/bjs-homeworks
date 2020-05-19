@@ -227,14 +227,16 @@ class StudentLog{
     }
   
   addGrade(grade, subject){
-    this.grade = grade;
-    this.subject = subject;
-    this.data[subject] = [];
     if (typeof grade == 'number'){
-      this.data[subject].push(this.grade)
+      if (this.data[subject] === undefined) {
+        this.data[subject] = [];
+        this.data[subject].push(grade);
+      } 
+        this.data[subject].push(grade);
     }
+    
     if ((typeof grade !== 'number') || grade < 1 || grade > 5){
-      console.warn(`Вы пытались поставить оценку "${this.grade}" по предмету "${this.subject}". Допускаются только числа от 1 до 5`)
+      console.warn(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5`)
     }
       return this.data[subject].length
     } 
@@ -247,7 +249,7 @@ class StudentLog{
      for (let i = 0; i < this.data[subject].length; i++){
        sum += this.data[subject][i];
      }
-    return sum / this.data[subject].length; //почему-то длина = 1. Из-за этого не получается посчитать среднюю оценку
+    return sum / this.data[subject].length; 
   }
   
   getTotalAverage(){
