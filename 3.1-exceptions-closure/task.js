@@ -12,8 +12,7 @@
 function parseCount(value){
 	let newValue = Number.parseInt(value, 10);
 	  if(isNaN(newValue)){
-	  	const valueError = new Error('Невалидное значение');
-	  	throw valueError;
+	  	throw new Error('Невалидное значение');
 	  }
    return newValue;
 }
@@ -21,8 +20,7 @@ function parseCount(value){
 
 function validateCount(value){
 	try {
-		let newValue = parseCount(value);
-		return newValue;
+		return parseCount(value);
 	}
    
     catch(err){
@@ -42,8 +40,7 @@ class Triangle {
     const sumBC = this.b + this.c;
     
 	    if (sumAB < this.c || sumBC < this.a || sumAC < this.b){  
-		   const sumError = new Error('Треугольник с такими сторонами не существует');
-		   throw sumError;
+		   throw new Error('Треугольник с такими сторонами не существует');
         }
     }
         getPerimeter(){
@@ -52,8 +49,7 @@ class Triangle {
         getArea(){
         	const semiPerimetr = (this.a + this.b + this.c)/2;
         	const area = Math.sqrt(semiPerimetr * (semiPerimetr - this.a) * (semiPerimetr-this.b) * (semiPerimetr-this.c));
-        	const roundArea = parseFloat(area.toFixed(3))
-        	return roundArea;
+        	return parseFloat(area.toFixed(3))
         }
 }
 
@@ -64,7 +60,7 @@ function getTriangle(a,b,c){
 		return triangle;
 	}
     catch(err){
-		return wrongTriangle = {
+		return {
 	        getPerimeter(){
     	      return "Ошибка! Неправильный треугольник";
             },

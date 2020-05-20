@@ -228,11 +228,12 @@ class StudentLog{
   
   addGrade(grade, subject){
     if (typeof grade == 'number'){
-      if (this.data[subject] === undefined) {
+      if ((subject in this.data) === false) {
         this.data[subject] = [];
         this.data[subject].push(grade);
-      } 
+      } else {
         this.data[subject].push(grade);
+      }
     }
     
     if ((typeof grade !== 'number') || grade < 1 || grade > 5){
@@ -253,9 +254,13 @@ class StudentLog{
   }
   
   getTotalAverage(){
-    //идей вообще никаких
+    let totalAverage = [];
+    let averageBySubject = getAverageBySubject(subject);
+    console.log(averageBySubject);
+    totalAverage.push(averageBySubject);
+    console.log(totalAverage);
+    return (totalAverage.reduce((accumulator, currentValue) => accumulator + currentValue)) / totalAverage.length;
   }
-
 }
 
 
