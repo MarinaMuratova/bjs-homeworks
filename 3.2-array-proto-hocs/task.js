@@ -56,11 +56,11 @@ function memorize(fn, limit) {
 
 function testCase(testFunction, timer){
 	const arrayWithArrays = [[1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4]];
-	console.time(timerName);
+	console.time('timerName');
 	for (let i = 0; i < 100; i++){
-      testFunction.forEach((element) => testFunction.apply(null, arrayWithArrays[i]));
+      arrayWithArrays.forEach((element) => testFunction(element));
 	}
-	console.timeEnd(timerName);
+	console.timeEnd('timerName');
 }
 
 
