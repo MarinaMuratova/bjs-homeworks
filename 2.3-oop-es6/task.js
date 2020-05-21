@@ -255,10 +255,10 @@ class StudentLog{
   
   getTotalAverage(){
     let totalAverage = [];
-    let averageBySubject = getAverageBySubject(subject);
-    console.log(averageBySubject);
+    for (let subject in this.data) {
+      let averageBySubject = this.getAverageBySubject(subject);
     totalAverage.push(averageBySubject);
-    console.log(totalAverage);
+    }
     return (totalAverage.reduce((accumulator, currentValue) => accumulator + currentValue)) / totalAverage.length;
   }
 }
