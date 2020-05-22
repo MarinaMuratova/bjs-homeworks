@@ -1,27 +1,27 @@
 class AlarmClock{
 	constructor(){
 		this.alarmCollection = [];  //Создайте свойство для хранения коллекции звонков alarmCollection с начальным значением пустого массива.
-		this.timerId = id; //Создайте свойство timerId для хранения id таймера без начального значения.
+		this.timerId = null; //Создайте свойство timerId для хранения id таймера без начального значения.
 	}
 
 	addClock(time, callback, id){ //Принимает параметр времени, функции-колбека, идентификатора создаваемого звонка
-		if (this.timerId == undefined){ //передан ли параметр id. Если параметр не передан, выведите ошибку
+		if (!id){ //(id == null) передан ли параметр id. Если параметр не передан, выведите ошибку. if (!id) - такая запись эквивалентна проверкам id == 0, id == undefined, id == false, id == ""
 			throw new Error('параметр id не передан');
 		}
-		if (this.timerId !== undefined){ //есть ли какой-нибудь звонок с уже существующим id. Если есть, выведите ошибку
+		if (this.alarmCollection.some((element) => element.id === id)){ //есть ли какой-нибудь звонок с уже существующим id. Если есть, выведите ошибку
 			throw new Error('звонок с уже существующим id');
 		}
-		obj = {id, time, callback};
+		let obj = {id, time, callback};
 		this.alarmCollection.push(obj); //добавьте в массив звонков объект со свойствами id, time, callback.
 	}
 
 	removeClock(id){ //Принимает id звонка, который следует удалить
 		const checkId = this.alarmCollection.filter((element) => element === id); // если в большом массиве нет такого id, то вернется пустой массив.
 		if (checkId.length == 0){ // если длина массива =0, значит, вернулся пустой массив, и id в нем не найден
-			return "Провал, id не найден";
+			return false//"Провал, id не найден";
 		} else {
 			this.alarmCollection.splice(checkId, 1); //Удалите из массива звонков тот, у которого id совпадает с текущим.
-			return "Нас настиг успех, id удален";
+			return true //"Нас настиг успех, id удален";
 		}
 	}
 
@@ -30,16 +30,14 @@ class AlarmClock{
 	}
 
 	start(){
-		function checkClock(call){ //Создайте функцию проверки (checkClock), которая принимает звонок---- что за звонок принимает???
-			if (getCurrentFormattedTime() === obj.time){ //если текущее время совпадает со временем звонка, то вызывайте колбек.
-				return obj.callback;
+		function checkClock(call){ //Создайте функцию проверки (checkClock), которая принимает звонок---- под call подразумевается Object.time из this.alarmCollection????
+			if (getCurrentFormattedTime() === this.time){ //если текущее время совпадает со временем звонка, то вызывайте колбек.
+				return this.callback;
 			}
 		}
-		if (id == undefined){ //Если значение идентификатора текущего таймера отсутствует ---- текущий это какой?, 
-				let newInterval = addClock(); // то создайте новый интервал. ---- новый интервал это новое время будильника или что?
-				this.alarmCollection.forEach((element) => checkClock(element));//В этом интервале реализуйте функцию, которая будет перебирать все звонки, и для каждого вызывать функцию checkClock
+		if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
+		this.timerId = setInterval(this.alarmCollection.forEach((element) => checkClock(element)), 1000); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
 		}
-		this.timerId = setInterval; //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера ---- текущий это какой? какой результат, если она просто воспроизводит заданную функцию много раз?
 	}
 
 	stop(){ //Сделайте проверку существования идентификатора текущего таймера. ---- текущий это какой? существование в массиве this.alarmCollection или кааком?
