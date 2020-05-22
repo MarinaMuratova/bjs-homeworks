@@ -22,45 +22,36 @@ function compareArrays( arr1, arr2 ){
 // }
 
 
-
 function memorize(fn, limit) {
   let memory = [];
 
-  return function func(){
+  return function func(...args){
      let obj = {};
      
      let argsToSearch = args;
-     // let argsToSearch = Array.from(arguments);
-
-     let arrayFound = memory.find((element) => compareArrays(element.args, argsToSearch));
-     // console.log(arrayFound);
-       if (arrayFound) {
-         return memory.find((element) => element.result);
+     let foundObject = memory.find((element) => compareArrays(element.args, argsToSearch));
+       if (foundObject) {
+         return foundObject.result;
         } 
-            let resultWithNewArgs = fn.apply(null, argsToSearch);
-            obj.args = argsToSearch;
-     //obj.args = Array.from(arguments);
+      let resultWithNewArgs = fn.apply(null, argsToSearch);
+      obj.args = argsToSearch;
      obj.result = resultWithNewArgs;
-     // obj.result = fn.apply(null, args);
-           memory.push(obj);
-              if (memory.length > limit) {
+      memory.push(obj);
+       if (memory.length > limit) {
                 memory.shift();
-              } 
-        return resultWithNewArgs; 
-    }    
+        } 
+    return resultWithNewArgs; 
+  }    
 }
-
-
-
 
 
 function testCase(testFunction, timer){
 	const arrayWithArrays = [[1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4]];
-	console.time('timerName');
+	console.time('timer');
 	for (let i = 0; i < 100; i++){
-      arrayWithArrays.forEach((element) => testFunction(element));
+      arrayWithArrays.forEach((element) => testFunction.apply(null, element));
 	}
-	console.timeEnd('timerName');
+	console.timeEnd('timer');
 }
 
 
