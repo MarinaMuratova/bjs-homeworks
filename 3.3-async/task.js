@@ -30,13 +30,15 @@ class AlarmClock{
 	}
 
 	start(){
+		let currentTime = this.getCurrentFormattedTime();
 		function checkClock(call){ //Создайте функцию проверки (checkClock), которая принимает звонок---- под call подразумевается Object.time из this.alarmCollection????
-			if (getCurrentFormattedTime() === this.time){ //если текущее время совпадает со временем звонка, то вызывайте колбек.
-				return this.callback;
+		    if (currentTime == call.time){ //если текущее время совпадает со временем звонка, то вызывайте колбек.
+				return call.callback;
 			}
 		}
+
 		if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
-		this.timerId = setInterval(this.alarmCollection.forEach((element) => checkClock(element)), 1000); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
+		this.timerId = setInterval(this.alarmCollection.forEach((element) => checkClock(element.time)), 1000); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
 		}
 	}
 
