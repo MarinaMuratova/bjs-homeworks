@@ -30,34 +30,28 @@ class AlarmClock{
 	}
 
 	start(){
-		
-		function checkClock(call){ 		//Создайте функцию проверки (checkClock), которая принимает звонок---- под call подразумевается Object.time из this.alarmCollection?
-		    let currentTime = this.getCurrentFormattedTime();
-		    if (currentTime == call.time){ //если текущее время совпадает со временем звонка, то вызывайте колбек.
-				return call.callback;
-			}
-		}
-
+		let checkClock = (call) => {if (this.getCurrentFormattedTime() == call.time){return call.result}};//Создайте функцию проверки (checkClock), которая принимает звонок
 		if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
-		this.timerId = setInterval(this.alarmCollection.forEach((element) => checkClock(element)), 1000); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
+		this.timerId = setInterval(() => this.alarmCollection.forEach((element) => checkClock(element), 1000)); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
 		}
 	}
 
-	stop(){ //Сделайте проверку существования идентификатора текущего таймера. ---- текущий это какой? существование в массиве this.alarmCollection или кааком?
-      if (){//Если у идентификатора текущего таймера есть значение, 
-      	clearInterval() //то вызовите функцию clearInterval для удаления интервала, ----- какого интервала, newInterval созданного в старт? 
-      	//а так же удалите значение из свойства идентификатора текущего таймера ------ текущий это какой? если obj.id, то удалять значение у свойства объекта? зачем?
+	stop(){ //Сделайте проверку существования идентификатора текущего таймера. 
+      if (this.timerId){//Если у идентификатора текущего таймера есть значение, 
+      	clearInterval(this.timerId); //то вызовите функцию clearInterval для удаления интервала, а так же удалите значение из свойства идентификатора текущего таймера
       }      
 	}
 
 	printAlarms(){ //С помощью метода forEach выведите информацию о каждом звонке (id и time)
-       this.alarmCollection.forEach((element) => element.id, element.time);
+        console.log(`Печать всех будильников в количестве: ${this.alarmCollection.length}`);
+       this.alarmCollection.forEach((element) => {
+       	console.log(`Будильник №${element.id} заведен на ${element.time}`);
+        });
 	}
 
 	clearAlarms(){
-		stop(); //Вызывает метод остановки интервала.-- какого интервала? 
-		//Удаляет все звонки.--- это как? и откуда?
-
+		stop(); //Вызывает метод остановки интервала. 
+		//Удаляет все звонки.
 	}
 }
 
