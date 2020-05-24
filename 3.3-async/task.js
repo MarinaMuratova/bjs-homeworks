@@ -14,7 +14,7 @@ class AlarmClock{
 		let obj = {id, time, callback};
 		this.alarmCollection.push(obj); //добавьте в массив звонков объект со свойствами id, time, callback.
 	}
-
+    
 	removeClock(id){ //Принимает id звонка, который следует удалить
 		const checkId = this.alarmCollection.filter((element) => element === id); // если в большом массиве нет такого id, то вернется пустой массив.
 		if (checkId.length == 0){ // если длина массива =0, значит, вернулся пустой массив, и id в нем не найден
@@ -29,16 +29,27 @@ class AlarmClock{
 		return new Date().toLocaleTimeString().slice(0,-3); //возвращает текущее время в строковом формате HH:MM
 	}
 
+    //вариант 1
 	start(){
-		let checkClock = (call) => {if (this.getCurrentFormattedTime() == call.time){return call.result}};//Создайте функцию проверки (checkClock), которая принимает звонок
+		let checkClock = (call) => {if (this.getCurrentFormattedTime() == call.time){return call.callback()}};//Создайте функцию проверки (checkClock), которая принимает звонок
 		if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
 		this.timerId = setInterval(() => this.alarmCollection.forEach((element) => checkClock(element), 1000)); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
 		}
 	}
 
+	//вариант 2
+    // start(){
+    //     let currentTime = this.getCurrentFormattedTime;
+    //     let checkClock = (call) => {if (currentTime() == call.time){return call.callback}};
+    //       if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
+		  //   this.timerId = setInterval(() => this.alarmCollection.forEach((element) => checkClock(element), 1000)); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
+		  // }
+    // }   
+
 	stop(){ //Сделайте проверку существования идентификатора текущего таймера. 
       if (this.timerId){//Если у идентификатора текущего таймера есть значение, 
       	clearInterval(this.timerId); //то вызовите функцию clearInterval для удаления интервала, а так же удалите значение из свойства идентификатора текущего таймера
+        this.timerId = null;
       }      
 	}
 
@@ -51,9 +62,10 @@ class AlarmClock{
 
 	clearAlarms(){
 		stop(); //Вызывает метод остановки интервала. 
-		//Удаляет все звонки.
+		this.alarmCollection = [];//Удаляет все звонки.
 	}
 }
+
 
 
 
