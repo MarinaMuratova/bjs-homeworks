@@ -39,7 +39,7 @@ class AlarmClock{
 			}
 		};
 		if (this.timerId == undefined){  
-		    this.timerId = setInterval(() => this.alarmCollection.forEach(element => checkClock(element), 1000)); 
+		    this.timerId = setInterval(() => this.alarmCollection.forEach(element => checkClock(element)), 1000); 
 		}
 	}
 
@@ -75,11 +75,14 @@ class AlarmClock{
 
 function testCase(){
 	const alarm = new AlarmClock();
-    alarm.addClock('19:41', () => console.log("Иди спать"), 1);
-    alarm.addClock('19:49', () => console.log("Иди спать"), 2);
-    alarm.addClock('21:01', () => console.log("Иди спать"), 3);
-    alarm.printAlarms();
-    alarm.removeClock(3);
+    alarm.addClock('20:04', () => console.log("Иди спать"), 1);
+    alarm.addClock('20:05', () => console.log("Иди спать"), 2);
+    alarm.addClock('20:06', () => {console.log("Иди спать"); alarm.removeClock(3)}, 3);
+    alarm.addClock('20:05', () => {
+    	console.log("Иди спать");
+        alarm.printAlarms();
+        alarm.printAlarms();
+    }, 4);
     alarm.printAlarms();
     alarm.start();
     alarm.clearAlarms();
