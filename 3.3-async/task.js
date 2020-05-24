@@ -1,39 +1,45 @@
 class AlarmClock{
 	constructor(){
-		this.alarmCollection = [];  //Создайте свойство для хранения коллекции звонков alarmCollection с начальным значением пустого массива.
-		this.timerId = null; //Создайте свойство timerId для хранения id таймера без начального значения.
+		this.alarmCollection = [];  
+		this.timerId = null; 
 	}
 
-	addClock(time, callback, id){ //Принимает параметр времени, функции-колбека, идентификатора создаваемого звонка
-		if (!id){ //(id == null) передан ли параметр id. Если параметр не передан, выведите ошибку. if (!id) - такая запись эквивалентна проверкам id == 0, id == undefined, id == false, id == ""
+	addClock(time, callback, id){
+		if (!id){ 
 			throw new Error('параметр id не передан');
 		}
-		if (this.alarmCollection.some((element) => element.id === id)){ //есть ли какой-нибудь звонок с уже существующим id. Если есть, выведите ошибку
+
+		if (this.alarmCollection.some((element) => element.id === id)){ 
 			throw new Error('звонок с уже существующим id');
 		}
+
 		let obj = {id, time, callback};
-		this.alarmCollection.push(obj); //добавьте в массив звонков объект со свойствами id, time, callback.
+		this.alarmCollection.push(obj); 
 	}
     
-	removeClock(id){ //Принимает id звонка, который следует удалить
-		const checkId = this.alarmCollection.filter((element) => element === id); // если в большом массиве нет такого id, то вернется пустой массив.
-		if (checkId.length == 0){ // если длина массива =0, значит, вернулся пустой массив, и id в нем не найден
-			return false//"Провал, id не найден";
+	removeClock(id){ 
+		const checkId = this.alarmCollection.filter((element) => element.id === id); 
+		if (checkId.length == 0){ 
+			return false
 		} else {
-			this.alarmCollection.splice(checkId, 1); //Удалите из массива звонков тот, у которого id совпадает с текущим.
-			return true //"Нас настиг успех, id удален";
+			this.alarmCollection.splice(checkId, 1); 
+			return true 
 		}
 	}
 
 	getCurrentFormattedTime(){
-		return new Date().toLocaleTimeString().slice(0,-3); //возвращает текущее время в строковом формате HH:MM
+		return new Date().toLocaleTimeString().slice(0,-3); 
 	}
 
     //вариант 1
 	start(){
-		let checkClock = (call) => {if (this.getCurrentFormattedTime() == call.time){return call.callback()}};//Создайте функцию проверки (checkClock), которая принимает звонок
-		if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
-		this.timerId = setInterval(() => this.alarmCollection.forEach((element) => checkClock(element), 1000)); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
+		let checkClock = (call) => {
+			if (this.getCurrentFormattedTime() == call.time){
+				return call.callback()
+			}
+		};
+		if (this.timerId == undefined){  
+		    this.timerId = setInterval(() => this.alarmCollection.forEach(element => checkClock(element), 1000)); 
 		}
 	}
 
@@ -41,30 +47,52 @@ class AlarmClock{
     // start(){
     //     let currentTime = this.getCurrentFormattedTime;
     //     let checkClock = (call) => {if (currentTime() == call.time){return call.callback}};
-    //       if (this.timerId == undefined){ //Если значение идентификатора текущего таймера отсутствует, 
+    //       if (this.timerId == undefined){  
 		  //   this.timerId = setInterval(() => this.alarmCollection.forEach((element) => checkClock(element), 1000)); //Результат функции setInterval сохраните в свойстве идентификатора текущего таймера
 		  // }
     // }   
 
-	stop(){ //Сделайте проверку существования идентификатора текущего таймера. 
-      if (this.timerId){//Если у идентификатора текущего таймера есть значение, 
-      	clearInterval(this.timerId); //то вызовите функцию clearInterval для удаления интервала, а так же удалите значение из свойства идентификатора текущего таймера
-        this.timerId = null;
-      }      
+	stop(){ 
+        if (this.timerId){
+      	  clearInterval(this.timerId); 
+          this.timerId = null;
+        }      
 	}
 
-	printAlarms(){ //С помощью метода forEach выведите информацию о каждом звонке (id и time)
+	printAlarms(){
         console.log(`Печать всех будильников в количестве: ${this.alarmCollection.length}`);
-       this.alarmCollection.forEach((element) => {
-       	console.log(`Будильник №${element.id} заведен на ${element.time}`);
-        });
+           this.alarmCollection.forEach((element) => {
+              console.log(`Будильник №${element.id} заведен на ${element.time}`);
+            });
 	}
 
 	clearAlarms(){
-		stop(); //Вызывает метод остановки интервала. 
-		this.alarmCollection = [];//Удаляет все звонки.
+		stop(); 
+		this.alarmCollection = [];
 	}
 }
+
+
+function testCase(){
+	const alarm = new AlarmClock();
+    alarm.addClock('19:41', () => console.log("Иди спать"), 1);
+    alarm.addClock('19:49', () => console.log("Иди спать"), 2);
+    alarm.addClock('21:01', () => console.log("Иди спать"), 3);
+    alarm.printAlarms();
+    alarm.removeClock(3);
+    alarm.printAlarms();
+    alarm.start();
+    alarm.clearAlarms();
+    alarm.printAlarms();
+}
+
+
+
+
+
+
+
+
 
 
 
