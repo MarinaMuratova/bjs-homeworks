@@ -75,16 +75,15 @@ class AlarmClock{
 
 function testCase(){
 	const alarm = new AlarmClock();
-    alarm.addClock('20:04', () => console.log("Иди спать"), 1);
-    alarm.addClock('20:05', () => console.log("Иди спать"), 2);
-    alarm.addClock('20:06', () => {console.log("Иди спать"); alarm.removeClock(3)}, 3);
-    alarm.addClock('20:05', () => {
-    	console.log("Иди спать");
-        alarm.printAlarms();
-        alarm.printAlarms();
-    }, 4);
-    alarm.printAlarms();
-    alarm.start();
+   alarm.addClock('20:05', () => console.log("Иди спать"), 1);
+   alarm.start();
+   alarm.start();
+   alarm.addClock('20:06', () => console.log("Иди спать"), 2);
+   alarm.start();
+   alarm.removeClock(2);
+   alarm.addClock('20:07', () => console.log("Иди спать"), 3);
+   alarm.start();
+    alarm.stop();
     alarm.clearAlarms();
     alarm.printAlarms();
 }
