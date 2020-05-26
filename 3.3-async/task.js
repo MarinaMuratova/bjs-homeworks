@@ -18,8 +18,8 @@ class AlarmClock{
 	}
     
 	removeClock(id){ 
-		const checkId = this.alarmCollection.filter((element) => element.id === id); 
-		if (checkId.length == 0){ 
+		const checkId = this.alarmCollection.findIndex((element) => element.id === id); 
+		if (checkId == -1){ 
 			return false
 		} else {
 			this.alarmCollection.splice(checkId, 1); 
@@ -76,15 +76,15 @@ class AlarmClock{
 function testCase(){
 	const alarm = new AlarmClock();
 	alarm.start();
-   alarm.addClock('14:49', () => {
+   alarm.addClock('00:04', () => {
    	console.log("Иди спать");
    }, 1);
-   alarm.addClock('14:50', () => {
+   alarm.addClock('00:05', () => {
    	console.log("Иди спать быстро");
    	alarm.removeClock(2)
    }, 2);
 
-   alarm.addClock('14:51', () => {
+   alarm.addClock('00:06', () => {
    	console.log("Ты идешь?");
     alarm.clearAlarms();
     alarm.printAlarms();
